@@ -1,0 +1,1 @@
+default_app_config = 'effectiveworkout.healthanamnese.apps.HealthanamneseConfig'

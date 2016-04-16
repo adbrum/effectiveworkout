@@ -1,0 +1,1 @@
+default_app_config = 'effectiveworkout.reviewsphysicals.apps.ReviewsphysicalsConfig'

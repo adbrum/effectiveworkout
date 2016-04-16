@@ -1,0 +1,1 @@
+web: gunicorn effectiveworkout.wsgi --log-file -

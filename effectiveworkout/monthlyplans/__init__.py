@@ -1,0 +1,1 @@
+default_app_config = 'effectiveworkout.monthlyplans.apps.MonthlyplansConfig'

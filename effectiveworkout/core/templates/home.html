@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+{% block content %}
+
+
+
+
+
+
+    <section id="subscription" style="padding-top: 200px;">
+        <body id="page-top" class="form_id index  panel box-v1">
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <img class="img-responsive" src="{% static 'img/banner.jpg' %}" alt="">
+
+                        {#                        <div class="intro-text">#}
+                        {#                            <span class="name">Functional Training</span>#}
+                        {#                            <hr class="star-primary">#}
+                        {#                            <span class="skills">Ginásio de treino funcional</span>#}
+                        {#                        </div>#}
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Subscribe Section -->
+        <section class="subsctiption" id="about" style="padding-top: 50px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        {#                    <div>#}
+                        <h2>Marcação de presença</h2>
+                        {#                        <hr class="star-primary">#}
+                        {#                        <div class="intro-text">#}
+                        {#                            <span class="skills">Lista de assiduidade</span>#}
+                        {#                        </div>#}
+                        <a href="{% url 'assiduousness:new' %}" class="portfolio-link" data-toggle="modal">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <button type="submit" class="btn btn-primary">Presença</button>
+                                    {#                                    <i class="fa fa-search-plus fa-3x"></i>#}
+                                </div>
+                            </div>
+                            {#                                            <img src="{% static 'img/portfolio/eventex.png' %}" class="img-responsive" alt="">#}
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+
+        <!-- Subscript Grid Section -->
+        <section class="success" id="subscription">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Inscrições</h2>
+                        <a id="criar_atleta" href="#" class="portfolio-link" data-toggle="modal">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <button type="submit" class="btn btn-primary">Novo atleta</button>
+                                    {#                                    <i class="fa fa-search-plus fa-3x"></i>#}
+                                </div>
+                            </div>
+                            {#                                            <img src="{% static 'img/portfolio/eventex.png' %}" class="img-responsive" alt="">#}
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- Footer -->
+        <section id="subscription" style="padding-top: 150px;">
+            <footer class="text-center">
+                <div class="footer-above">
+                    <div class="container">
+                        <div class="row">
+                            <div class="footer-col col-md-4">
+                                <h3>Localização</h3>
+
+                                <p>Av. Fialho de Almeida, 7800-395<br>
+                                    2º andar, Edifício Hotel Melius<br>Beja Portugal</p>
+                            </div>
+                            <div class="footer-col col-md-4">
+                                <h3>Redes sociais</h3>
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="https://www.facebook.com/Kett-Clube-409334749265572/?fref=ts&__mref=message_bubble"
+                                           class="btn-social btn-outline"><i
+                                                class="fa fa-fw fa-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="btn-social btn-outline"><i
+                                                class="fa fa-fw fa-google-plus"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="btn-social btn-outline"><i
+                                                class="fa fa-fw fa-twitter"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="footer-col col-md-4">
+                                <h3>Contatos</h3>
+
+                                <p>Email: effectiveworkout@gmail.com</p>
+
+                                {#                        <p>Telefone:</p>#}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-below">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                Copyright &copy; Adriano Regis 2016
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div>-</div>
+        </section>
+        </body>
+    </section>
+{% endblock content %}
+</html>
+{% block javascript %}
+
+    <script src="{% static 'js/plugins/jquery.datatables.min.js' %}"></script>
+    <script src="{% static 'js/plugins/datatables.bootstrap.min.js' %}"></script>
+
+
+
+    <!-- custom -->
+    {#    <script src="{% static 'js/main.js' %}"></script>#}
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            console.log("ready atleta!");
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+
+            $("#criar_atleta").click(function () {
+                var csrftoken = getCookie('csrftoken');
+                console.log("NOVO!");
+                $.ajax({
+                    url: "{% url 'external:new' %}",
+                    type: 'GET',
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    },
+                    success: function (data) {
+                        console.log("index atleta!");
+                        {#                      console.log(data);#}
+                        $(".form_id").html(data);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+{% endblock javascript %}

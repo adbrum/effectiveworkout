@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{#{% block nav %}#}
+{#    <div class="header-frame row">#}
+{#        {% include 'nav.html' only %}#}
+{#    </div>#}
+{#{% endblock nav %}#}
+
+{% block content %}
+    <!-- start: Content -->
+    <div id="content">
+    <div class="panel box-shadow-none content-header">
+        <div class="panel-body">
+            <div class="col-md-12">
+                <h3 class="animated fadeInLeft">Edição perfil utilizador</h3>
+                <p class="animated fadeInDown">
+                    <a href="{% url 'administration:dash' %}">Dashboard</a> <span class="fa-angle-right fa"></span>
+                    Edição perfil utilizador
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="form-horizontal" style='visibility:visible;'>
+        {% csrf_token %}
+        <div class="col-md-8">
+            <div class="panel form-element-padding form_id">
+                <div class="panel-heading">
+                    <h4>Editar dados: {{ utilizador.first_name }} {{ utilizador.last_name }}</h4>
+                </div>
+                <div class="panel-body" style="padding-bottom:30px;">
+                    <div class="form-group">
+                        <div class="col-sm-5">
+                            <input type="button" id="save" class="edit_perfil btn btn-primary" name="Save"
+                                   value="Editar"
+                                   style="float:left;"/>
+                            <div class="cancel"><span class="text_small"></span>
+                                <input type="button" id="b_cancelar" class="btn btn-default" name="Cancelar"
+                                       value="Cancelar"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        {% for field in form %}
+                            {% if field.field.required %}
+                                <div class="form-group">
+                                    <tr>
+                                        <td class="title">
+                                            <label class="control-label col-xs-2"
+                                                   for="id_{{ field.name }}">{{ field.label }}</label>
+                                        </td>
+                                        <td>
+                                            <div class="col-sm-10">
+                                                {% if field.errors %}
+                                                    <span class="help-block {% if form.errors %} has-error errorField{% endif %}">
+                                                {% endif %}
+                                                {{ field }}
+                                                {% if field.errors %}
+                                                    {% for error in field.errors %}
+                                                        {{ error }}
+                                                    {% endfor %}
+                                                    </span>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </div>
+                            {% else %}
+                                <div class="form-group">
+                                    <tr>
+                                        <td class="title">
+                                            <label class="control-label col-xs-2"
+                                                   for="id_{{ field.name }}">{{ field.label }}</label>
+                                        </td>
+                                        <td>
+                                            <div class="col-sm-10">
+                                                {{ field }}
+                                                {% for error in field.errors %}
+                                                    {{ error }}
+                                                {% endfor %}
+                                                {#                                            </span>#}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="apagarModal_perfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true"></div>
+    <div class="modal fade" id="ativarModal_perfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true"></div>
+    <!-- end: content -->
+
+{% endblock content %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            $('#b_cancelar').click(function () {
+                window.location = "{% url 'administration:dash' %}"
+            });
+
+            $(".edit_perfil").click(function () {
+                var csrftoken = getCookie('csrftoken');
+                var idUser = {{ idUser }}
+                        $.ajax({
+                            url: '{% url 'config:meuPerfil' idUser %}',
+                            type: 'GET',
+                            data: {},
+                            beforeSend: function (xhr) {
+                                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                            },
+                            success: function (data) {
+                                $(".form_id").html(data);
+                            }
+                        });
+            });
+        });
+    </script>
+{% endblock javascript %}
