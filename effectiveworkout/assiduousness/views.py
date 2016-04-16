@@ -51,7 +51,6 @@ def new(request):
             return render(request, 'assiduity.html', locals())
 
         if atleta is not None:
-
             return render(request, 'assiduity.html', locals())
 
 

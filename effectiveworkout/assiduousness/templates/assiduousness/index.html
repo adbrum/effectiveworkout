@@ -112,7 +112,7 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            console.log("ready atleta!");
+            console.log("ready user!");
             function getCookie(name) {
                 var cookieValue = null;
                 if (document.cookie && document.cookie != '') {
@@ -160,7 +160,7 @@
                         xhr.setRequestHeader("X-CSRFToken", csrftoken);
                     },
                     success: function (data) {
-                        console.log("index atleta!");
+                        console.log("index user!");
                         {#                      console.log(data);#}
                         $(".form_id").html(data);
                     }

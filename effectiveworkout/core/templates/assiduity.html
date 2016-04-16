@@ -48,9 +48,9 @@
                         <a href="{% url 'home' %}"><h1 class="atomic-symbol">WK</h1></a>
                         <p class="element-name">Presenças</p>
                         <i class="icons icon-arrow-down"></i>
-                        <p class="element-name">{{ atleta.nome }} {{ atleta.sobrenome }}</p>
+                        <p class="element-name">{{ atleta.user.first_name }} {{ atleta.user.last_name }}</p>
                         <div class="form-group form-animate-text hidden" style="margin-top:40px !important;">
-                            <input name="numeroatleta" value="{{ atleta.pk }}" type="text" class="form-text" required>
+                            <input name="numeroatleta" value="{{ atleta.user.pk }}" type="text" class="form-text" required>
                             <span class="bar"></span>
                             <label>Nº do atleta</label>
                         </div>
