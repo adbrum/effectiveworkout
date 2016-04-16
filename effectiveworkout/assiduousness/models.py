@@ -11,7 +11,7 @@ class Presenca(models.Model):
     # this is not needed if small_image is created at set_image
     def save(self, *args, **kwargs):
         user = UserProfile.objects.get(pk=self.numeroatleta)
-        self.nome = user.user.get_full_name()#first_name.title() + ' ' + user.user.last_name.title()
+        self.nome = user.user.first_name.title() + ' ' + user.user.last_name.title()
         super(Presenca, self).save(*args, **kwargs)
 
     class Meta:
