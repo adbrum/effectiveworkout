@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                 ('quest017', models.BooleanField(choices=[(True, 'Sim'), (False, 'Não')], verbose_name='Doença recente?')),
                 ('quest018', models.BooleanField(choices=[(True, 'Sim'), (False, 'Não')], verbose_name='Hospitalização?')),
                 ('quest019', models.BooleanField(choices=[(True, 'Sim'), (False, 'Não')], verbose_name='Procedimentos cirúrgicos?')),
-                ('quest020', models.BooleanField(choices=[(True, 'Sim'), (False, 'Não')], verbose_name='Pratica algum tipo de exercício regularmente fora do KC?')),
+                ('quest020', models.BooleanField(choices=[(True, 'Sim'), (False, 'Não')], verbose_name='Pratica algum tipo de exercício regularmente fora do WK?')),
                 ('quest021', models.TextField(blank=True, verbose_name='Se sim, qual e quantas vezes por semana?')),
                 ('quest022', models.TextField(blank=True, verbose_name='Alguma observação importante a declarar?')),
                 ('quest023', models.BooleanField(choices=[(True, 'Sim'), (False, 'Não')], verbose_name='Declara que compreendeu integralmente o conteúdo deste documento?')),

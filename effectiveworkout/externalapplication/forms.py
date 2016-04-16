@@ -533,7 +533,7 @@ class HealthAnamneseForm(ModelForm):
     # ANAMINESE DESPORTIVA#
     quest020 = forms.ChoiceField(BOOL_CHOICES, required=True,
                                  label=(
-                                     'Pratica algum tipo de exercício regularmente fora do KC?'),
+                                     'Pratica algum tipo de exercício regularmente fora do WK?'),
                                  widget=forms.RadioSelect(renderer=HorizontalRadioRenderer,
                                                           attrs={'class': 'form-control input-sm medio required_form'}))
 

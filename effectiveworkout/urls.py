@@ -3,7 +3,7 @@ from django.contrib import admin
 from effectiveworkout.administration.views import Logout, Login
 from effectiveworkout.core.views import home, unauthorized
 from effectiveworkout.exercises.api import views as exercises_api_views
-admin.site.site_header = 'Administração Kettclub'
+admin.site.site_header = 'Administração Effective Workout'
 
 urlpatterns = [
     url(r'^$', home.as_view(), name='home'),

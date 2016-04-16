@@ -34,7 +34,7 @@ class SaudeAnamnese(models.Model):
     quest018 = models.BooleanField('Hospitalização?', choices=BOOL_CHOICES)
     quest019 = models.BooleanField('Procedimentos cirúrgicos?', choices=BOOL_CHOICES)
     # ANAMINESE DESPORTIVA#
-    quest020 = models.BooleanField('Pratica algum tipo de exercício regularmente fora do KC?', choices=BOOL_CHOICES)
+    quest020 = models.BooleanField('Pratica algum tipo de exercício regularmente fora do WK?', choices=BOOL_CHOICES)
     quest021 = models.TextField('Se sim, qual e quantas vezes por semana?', blank=True)
     quest022 = models.TextField('Alguma observação importante a declarar?', blank=True)
     quest023 = models.BooleanField('Declara que compreendeu integralmente o conteúdo deste documento?',

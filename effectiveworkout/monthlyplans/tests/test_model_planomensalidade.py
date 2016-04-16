@@ -7,7 +7,7 @@ from effectiveworkout.monthlyplans.models import PlanoMensalidade
 class UserProfileModelTest(TestCase):
     def setUp(self):
         self.obj = PlanoMensalidade(
-            nome='KC Rapidinha',
+            nome='WK Rapidinha',
             valor=15.00,
             horario='Tarde',
             ativo=True
@@ -23,4 +23,4 @@ class UserProfileModelTest(TestCase):
         self.assertIsInstance(self.obj.created_at, datetime)
 
     def test_str(self):
-        self.assertEqual('KC Rapidinha', str(self.obj.nome))
+        self.assertEqual('WK Rapidinha', str(self.obj.nome))

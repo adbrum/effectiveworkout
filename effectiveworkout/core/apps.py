@@ -3,7 +3,7 @@ from django.apps import AppConfig
 
 class CoreConfig(AppConfig):
     name = 'effectiveworkout.core'
-    verbose_name = 'Administração Kettclub'
+    verbose_name = 'Administração Effective Workout'
 
 
 class UsersProfilesConfig(AppConfig):
