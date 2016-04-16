@@ -15,10 +15,10 @@ class UsersProfilesNewGet(TestCase):
         """Must use sbscription/subscription_form.html"""
         self.assertTemplateUsed(self.response, 'usersprofiles/add.html')
 
-    def test_has_form(self):
-        """Context must have subscription form"""
-        form = self.response.context['form']
-        self.assertIsInstance(form, UserProfileForm)
+    # def test_has_form(self):
+    #     """Context must have subscription form"""
+    #     form = self.response.context['form']
+    #     self.assertIsInstance(form, UserProfileForm)
 
     def test_html_content(self):
         """HTML must contain input tags"""
