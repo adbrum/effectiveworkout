@@ -38,7 +38,7 @@ class UserProfileForm(ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ['datainicio', 'datanascimento', 'idade', 'nif', 'cc', 'telefone',
+        fields = ['avatar', 'datainicio', 'datanascimento', 'idade', 'nif', 'cc', 'telefone',
                   'telefone2', 'planomensalidade']
 
 

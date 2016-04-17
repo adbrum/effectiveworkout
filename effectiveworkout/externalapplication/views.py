@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group, User
 from django.core.urlresolvers import reverse
+from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import resolve_url as r
@@ -36,23 +37,17 @@ def empty_prototipo_form(request):
 
 
 def create(request):
-
     """
     Adicionar Utilizadores
     :param request:
     :return:
     """
-
     saveNew = False
 
     # perfis = Group.objects.all()
 
     listaErros = []
     warning = False
-    # if len(perfis) == 0:
-    #     warning = True
-    #     warningMensage = ('Atenção deve criar perfis de utilizador antes das criação de um utilizador!')
-    #     listaErros.append(warningMensage)
 
     if request.method == 'POST':
         form = AddUserForm(request.POST or None)
@@ -76,10 +71,10 @@ def create(request):
         else:
 
             return render(request, 'externalapplication/add.html', locals())
-
-    else:
-        form = AddUserForm()
-        return render(request, 'externalapplication/add.html', locals())
+    #
+    # else:
+    #     form = AddUserForm()
+    #     return render(request, 'externalapplication/add.html', locals())
     # form = UserProfileForm(request.POST or None)
     # form_02 = HealthAnamneseForm(request.POST or None)
     #

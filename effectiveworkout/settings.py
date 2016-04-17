@@ -190,8 +190,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'core/static/media/')
-# MEDIA_URL = 'http://127.0.0.1:8000/static/media/'
-MEDIA_URL = 'https://effectiveworkout.herokuapp.com/static/media/'
+MEDIA_URL = config('MEDIA_URL')
+
 
 
 

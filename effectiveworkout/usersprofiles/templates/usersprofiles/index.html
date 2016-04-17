@@ -13,10 +13,10 @@
         <div class="panel box-shadow-none content-header">
             <div class="panel-body">
                 <div class="col-md-12">
-                    <h3 class="animated fadeInLeft">Inscrição Atletas</h3>
+                    <h3 class="animated fadeInLeft">Perfís Utilizadores</h3>
                     <p class="animated fadeInDown">
                         <a href="{% url 'administration:dash' %}">Dashboard</a> <span class="fa-angle-right fa"></span>
-                        Inscrição Atletas
+                        Perfís Utilizadores
                     </p>
                 </div>
             </div>
@@ -24,7 +24,7 @@
         <div class="col-md-12 top-20">
             <div class="col-md-12 ">
                 <div class="panel form_id">
-                    <div class="panel-heading"><h3>Lista de users</h3>
+                    <div class="panel-heading"><h3>Lista de Utilizadores</h3>
                         {% if list_ != 0 %}
                             {% if tamLista != 0 %}
                                 <div class="dropdown">
@@ -58,7 +58,8 @@
                                             <tr>
                                                 <th width="38px;"><input type="checkbox" class="checkAll"></th>
                                                 <th>Nome</th>
-                                                <th>"Nº do user</th>
+                                                <th>Nº do user</th>
+                                                <th>Foto</th>
                                                 <th>Email</th>
                                                 <th>Telefone</th>
                                                 <th>Plano</th>
@@ -78,6 +79,7 @@
                                                                name="{{ user.pk }}">{{ user.user.first_name }} {{ user.user.last_name }}</a>
                                                         </td>
                                                         <td>{{ user.pk }}</td>
+                                                        <td>'<img width="32px" src="{% static 'media/'%}{{ user.avatar }}"/></td>
                                                         <td>{{ user.user.email }}</td>
                                                         <td>{{ user.telefone }}</td>
                                                         <td>{{ user.planomensalidade }}</td>
@@ -98,6 +100,7 @@
                                                                name="{{ user.pk }}">{{ user.user.first_name }} {{ user.user.last_name }}</a>
                                                         </td>
                                                         <td>{{ user.pk }}</td>
+                                                        <td>'<img width="32px" src="{% static 'media/'%}{{ user.avatar }}"/></td>
                                                         <td>{{ user.user.email }}</td>
                                                         <td>{{ user.telefone }}</td>
                                                         <td>{{ user.planomensalidade }}</td>
