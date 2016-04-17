@@ -93,16 +93,14 @@ def editUserProfile(request, pk):
     argUser = user.username
     argEmail = user.email
 
-    # listaGrupos = user.groups.filter(name='utilizador')
+    form = EditUserForm(argUser, argEmail, request.POST or None, instance=user)
+    form2 = EditUserProfileForm(request.POST or None, instance=perfil)
 
-    form = EditUserProfileForm(request.POST or None, instance=perfil)
-    form2 = EditUserForm(argUser, argEmail, request.POST or None, instance=user)
-
-    # form2 = EditUserForm(argUser, argEmail, listaGrupos, request.POST or None, instance=user)
-    if not (form.is_valid() or form.is_valid()):
+    if not (form.is_valid() or form2.is_valid()):
         return render(request, 'usersprofiles/edit.html', locals())
     else:
         form.save()
+        form2.save()
         return HttpResponseRedirect(r('usersprofiles:success'))
 
 

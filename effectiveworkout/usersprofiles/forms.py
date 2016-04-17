@@ -43,6 +43,8 @@ class UserProfileForm(ModelForm):
 
 
 class EditUserProfileForm(ModelForm):
+    # avatar = forms.FileField()
+
     ativo = forms.ChoiceField(BOOL_CHOICES,
                               label=('Ativo'),
                               widget=forms.Select(attrs={'placeholder': '--',
@@ -79,7 +81,7 @@ class EditUserProfileForm(ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ['datainicio', 'datanascimento', 'idade', 'nif', 'cc',
+        fields = ['avatar', 'datainicio', 'datanascimento', 'idade', 'nif', 'cc',
                   'telefone',
                   'telefone2', 'planomensalidade']
 
@@ -136,7 +138,6 @@ class AddUserForm(forms.Form):
         fields = ("username", "first_name", "last_name", "password", "email")
 
 
-
 # Formulário para a edição do utilizador
 class EditUserForm(ModelForm):
     error_messages = {
@@ -162,7 +163,7 @@ class EditUserForm(ModelForm):
                              label=(u'E-mail'),
                              widget=forms.TextInput(attrs={'class': 'form-control input-sm medio required_form'}))
 
-    def __init__(self, username, email, listaGupos, *args, **kwargs):
+    def __init__(self, username, email, *args, **kwargs):
         super(EditUserForm, self).__init__(*args, **kwargs)
         self.username = username
         self.email = email

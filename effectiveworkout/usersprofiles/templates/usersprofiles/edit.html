@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                    {% for field in form2 %}
+                    {% for field in form %}
                             {% if field.field.required %}
                                 <div class="form-group">
                                     <tr>
@@ -79,7 +79,7 @@
                                 </div>
                             {% endif %}
                         {% endfor %}
-                        {% for field in form %}
+                        {% for field in form2 %}
                             {% if field.field.required %}
                                 <div class="form-group">
                                     <tr>

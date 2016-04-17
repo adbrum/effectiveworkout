@@ -42,6 +42,10 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 
+# MEDIA_URL = config('MEDIA_URL')
+
+
+
 TIME= 600
 SESSION_COOKIE_AGE = TIME
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -189,11 +193,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'core/static/media/')
-MEDIA_URL = config('MEDIA_URL')
 
-
-
+MEDIA_URL = '/static/media/'
 
 # print('BASEDIR', BASE_DIR)
 # print('PROJECT_ROOT', PROJECT_DIR)
